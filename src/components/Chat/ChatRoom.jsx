@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import firebase from "./firebase";
+import firebase from "../firebase";
 import ChatMessage from "./ChatMessage";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 
@@ -9,7 +9,7 @@ export default function ChatRoom() {
 
   const dummy = useRef();
   const messageRef = firestore.collection("messages");
-  const query = messageRef.orderBy("createdAt").limit(25);
+  const query = messageRef.orderBy("createdAt");
 
   // querying the db / listen to data with a hook
   const [messages] = useCollectionData(query, { idField: "id" });
@@ -41,14 +41,17 @@ export default function ChatRoom() {
         <div ref={dummy}></div>
       </main>
 
-      <form onSubmit={sendMessage}>
-        <input
-          // type="text"
-          value={formValue}
-          onChange={(e) => setFormValue(e.target.value)}
-        />
-        <button type="submit">send</button>
-      </form>
+      <div style={{ textAlign: "center" }}>
+        <form onSubmit={sendMessage}>
+          <input
+            // type="text"
+            value={formValue}
+            onChange={(e) => setFormValue(e.target.value)}
+            style={{ width: "70%" }}
+          />
+          <button type="submit">send</button>
+        </form>
+      </div>
     </div>
   );
 }

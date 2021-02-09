@@ -1,6 +1,6 @@
 import React from "react";
 import "./message.css";
-import firebase from "./firebase";
+import firebase from "../firebase";
 
 export default function ChatMessage(props) {
   const { text, uid, photoURL } = props.message;

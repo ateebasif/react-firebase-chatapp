@@ -1,10 +1,11 @@
 import React, { useRef, useState } from "react";
 import firebase from "./components/firebase";
-import ChatRoom from "./components/ChatRoom";
+import ChatRoom from "./components/Chat/ChatRoom";
 import SignIn from "./components/SignIn.js";
-
+import "./App.css";
 import { useAuthState } from "react-firebase-hooks/auth";
 import "./message.css";
+import Navbar from "./components/Navbar/index";
 
 function App() {
   const auth = firebase.auth();
@@ -15,14 +16,20 @@ function App() {
 
   return (
     <div className="App">
-      {auth.currentUser && (
+      {/*auth.currentUser && (
         <button onClick={() => auth.signOut()}>Sign Out</button>
-      )}
-      <h3>chat app</h3>
+      ) */}
 
-      <header></header>
+      <Navbar />
 
-      <section>{user ? <ChatRoom /> : <SignIn />}</section>
+      <section style={{ padding: "10px 50px 0px 50px" }}>
+        {user && (
+          <div className="chatRoom">
+            {" "}
+            <ChatRoom />{" "}
+          </div>
+        )}
+      </section>
     </div>
   );
 }
