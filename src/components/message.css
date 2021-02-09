@@ -1,0 +1,34 @@
+.message {
+  display: flex;
+  align-items: center;
+}
+
+.sent {
+  flex-direction: row-reverse;
+}
+
+.sent p {
+  /* color: white; */
+  /* background: #0b93f6; */
+  align-self: flex-end;
+}
+
+.mesgImg sent {
+  /* margin-right: 20px; */
+  /* height: 500; */
+}
+
+.imgSent {
+  margin-right: 10px;
+}
+
+.imgReceived {
+  margin-left: 10px;
+}
+
+.textSent {
+  margin-right: 5px;
+}
+.textReceived {
+  margin-left: 5px;
+}
